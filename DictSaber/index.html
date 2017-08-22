@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DictSaber</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="css/jquery-labelauty.css">
+	<style type="text/css">
+		* {margin: 0;padding: 0;}
+		html, body {height: 100%;}
+		ul { list-style-type: none;}
+		li { display: inline-block;}
+		li { margin: 10px 0;}
+		input.labelauty + label { font: 12px ;}
+		.dowebok{margin-top:10px;}
+		.main{margin: 0 auto;width: 550px;height: 100px; margin-top: 20%;text-align: center;}
+		a{width: 100px;display:block;text-align: center;text-decoration: none;border-radius: 10px; color: white;float: right; margin-left: 10px;background-color: #3498db;font-size: 14px; height: 30px; line-height: 30px; margin-top: 35px;}
+		#word{width: 300px; height: 60px;border: 2px solid #3498db;display:inline-block;line-height: 60px;margin-top: 20px;font-size: 25px;text-indent: 10px;border-radius: 20px;outline:none;}
+	</style>
+</head>
+<body>
+	<div class="main">
+	<input type="text" name="search" id="word">
+	<a href="javascript:void(0);" onclick="closeTab();">关闭标签页</a>
+	<a href="javascript:void(0);" onclick="goto();">搜索</a>
+	<ul class="dowebok">
+	<li><input type="checkbox" name="checkbox" id='1' checked data-labelauty="百度翻译" url="https://fanyi.baidu.com/#en/zh/"></li>
+	<li><input type="checkbox" name="checkbox" id='2' checked data-labelauty="必应翻译" url="https://www.bing.com/dict/search?q="></li>
+	<li><input type="checkbox" name="checkbox" id='3' checked data-labelauty="剑桥翻译" url="http://dictionary.cambridge.org/zhs/词典/英语/"></li>
+	<li><input type="checkbox" name="checkbox" id='4'  data-labelauty="有道翻译" url="http://dict.youdao.com/search?le=eng&q="></li>
+	<li><input type="checkbox" name="checkbox" id='5'  data-labelauty="金山翻译" url="http://www.iciba.com/"></li>
+	<li><input type="checkbox" name="checkbox" id='6' checked data-labelauty="谷歌翻译" url="https://translate.google.cn/?hl=en#en/zh-CN/"></li>
+	<li><input type="checkbox" name="checkbox" id='7' data-labelauty="谷歌图片" url="https://www.google.com/search?tbm=isch&q="></li>
+	<li><input type="checkbox" name="checkbox" id='8' data-labelauty="百度图片" url="http://image.baidu.com/search/index?tn=baiduimage&word="></li>
+	<li><input type="checkbox" name="checkbox" id='9' data-labelauty="Youtube" url="https://www.youtube.com/results?search_query="></li>
+	<li><input type="checkbox" name="checkbox" id='10' data-labelauty="StackOverflow" url="https://stackoverflow.com/search?q="></li>
+	<li><input type="checkbox" name="checkbox" id='11' data-labelauty="DuckDuckGo" url="https://duckduckgo.com/?q="></li>
+	<li><input type="checkbox" name="checkbox" id='12' data-labelauty="Github" url="https://github.com/search?utf8=✓&q="></li>
+	<li><input type="checkbox" name="checkbox" id='13' checked data-labelauty="Wiki" url="https://en.wikipedia.org/wiki/"></li>
+	<li><input type="checkbox" name="checkbox" id='14' checked data-labelauty="谷歌搜索" url="https://www.google.com/?gws_rd=cr,ssl#newwindow=1&safe=strict&q="></li>
+	<li><input type="checkbox" name="checkbox" id='15' checked data-labelauty="谷歌学术" url="https://scholar.google.com/scholar?hl=en&q="></li>
+	</ul>
+	<div>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	<script src="js/jquery-labelauty.js"></script>
+	<script>
+
+		var win_Array = new Array(); 
+		var checkFlag = [
+			"https://fanyi.baidu.com/#en/zh/",
+			"https://www.bing.com/dict/search?q=",
+			"http://dictionary.cambridge.org/zhs/词典/英语/",
+			"#",
+			"#",
+			"https://translate.google.cn/?hl=en#en/zh-CN/",
+			"#",
+			"#",
+			"#",
+			"#",
+			"#",
+			"#",
+			"https://en.wikipedia.org/wiki/",
+			"https://www.google.com.hk/?gws_rd=cr,ssl#newwindow=1&safe=strict&q=",
+			"https://scholar.google.com/scholar?hl=en&q="
+		]
+
+		$(function() { 
+			var userdefaultData = localStorage.getItem('userdefault');
+			if(userdefaultData != null) {
+
+				checkFlag = JSON.parse(userdefaultData)
+
+				for (var i = 0; i < checkFlag.length; i++) {
+					
+					if (checkFlag[i] == "#") {
+						$(".dowebok input:eq(" + i + ")").removeAttr("checked")
+						// console.log(userdefault[i])
+					} else {
+						$(".dowebok input:eq(" + i + ")").attr("checked", "")
+					}
+				}
+			}
+
+			$(':checkbox').labelauty();
+			$('#word').bind('keypress',function(event){  
+            	if(event.keyCode == "13") {  
+  					goto();
+            	}  
+        	});
+        	$(".labelauty").click( function(){
+				var index = $(this).attr('id') - 1
+  				if( $(this).is(':checked') ) {
+  					checkFlag[index] = $(this).attr('url')
+  				} else {
+  					checkFlag[index] = '#'
+  				}
+    			localStorage.setItem('userdefault', JSON.stringify(checkFlag));
+			});
+		});
+
+
+		function closeTab() {
+			for (var i = win_Array.length - 1; i >= 0; i--) {
+				win_Array[i].close();
+			}
+			win_Array = []
+		}
+
+		function goto() {
+			closeTab();
+			var key = $('#word').val()
+			if (key == null || $.trim(key) == '') return;
+			key = $.trim(key)
+			for (var i = 0; i < checkFlag.length; i++) {
+				if (checkFlag[i] == '#') continue
+				var url = checkFlag[i] + key;
+				win_Array.push(window.open(url))
+			}
+		}
+	</script>
+</body>
+</html>
