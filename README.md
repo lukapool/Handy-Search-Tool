@@ -8,6 +8,7 @@ Handy-Search-Tool ![License MIT](https://go-shields.herokuapp.com/license-MIT-bl
 用于快速同时打开不同搜索引擎的搜索结果，提高工作效率。😊
 
 搜索引擎包括：
+- COCA    ✅
 - 百度翻译 ✅
 - 必应翻译 ✅
 - 剑桥翻译 ✅
