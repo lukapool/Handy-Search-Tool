@@ -27,32 +27,35 @@
 	<a href="javascript:void(0);" onclick="closeTab();">关闭标签页</a>
 	<a href="javascript:void(0);" onclick="goto();">搜索</a>
 	<ul class="dowebok">
-	<li><input type="checkbox" name="checkbox" id='1' checked data-labelauty="百度翻译" url="https://fanyi.baidu.com/#en/zh/"></li>
-	<li><input type="checkbox" name="checkbox" id='2' checked data-labelauty="必应翻译" url="https://www.bing.com/dict/search?q="></li>
-	<li><input type="checkbox" name="checkbox" id='3' checked data-labelauty="剑桥翻译" url="http://dictionary.cambridge.org/zhs/spellcheck/%E8%8B%B1%E8%AF%AD/?q="></li>
-	<li><input type="checkbox" name="checkbox" id='4'  data-labelauty="有道翻译" url="http://dict.youdao.com/search?le=eng&q="></li>
-	<li><input type="checkbox" name="checkbox" id='5'  data-labelauty="金山翻译" url="http://www.iciba.com/"></li>
-	<li><input type="checkbox" name="checkbox" id='6' checked data-labelauty="谷歌翻译" url="https://translate.google.cn/?hl=en#en/zh-CN/"></li>
-	<li><input type="checkbox" name="checkbox" id='7' data-labelauty="谷歌图片" url="https://www.google.com/search?tbm=isch&q="></li>
-	<li><input type="checkbox" name="checkbox" id='8' data-labelauty="百度图片" url="http://image.baidu.com/search/index?tn=baiduimage&word="></li>
-	<li><input type="checkbox" name="checkbox" id='9' data-labelauty="Youtube" url="https://www.youtube.com/results?search_query="></li>
-	<li><input type="checkbox" name="checkbox" id='10' data-labelauty="StackOverflow" url="https://stackoverflow.com/search?q="></li>
-	<li><input type="checkbox" name="checkbox" id='11' data-labelauty="DuckDuckGo" url="https://duckduckgo.com/?q="></li>
-	<li><input type="checkbox" name="checkbox" id='12' data-labelauty="Github" url="https://github.com/search?utf8=✓&q="></li>
-	<li><input type="checkbox" name="checkbox" id='13' checked data-labelauty="Wiki" url="https://en.wikipedia.org/wiki/"></li>
-	<li><input type="checkbox" name="checkbox" id='14' checked data-labelauty="谷歌搜索" url="https://www.google.com/?gws_rd=cr,ssl#newwindow=1&safe=strict&q="></li>
-	<li><input type="checkbox" name="checkbox" id='15' checked data-labelauty="谷歌学术" url="https://scholar.google.com/scholar?hl=en&q="></li>
+	<li><input type="checkbox" name="checkbox" id='1' checked data-labelauty="COCA" url="https://corpus.byu.edu/coca/"></li>
+
+	<li><input type="checkbox" name="checkbox" id='2' checked data-labelauty="百度翻译" url="https://fanyi.baidu.com/#en/zh/"></li>
+	<li><input type="checkbox" name="checkbox" id='3' checked data-labelauty="必应翻译" url="https://www.bing.com/dict/search?q="></li>
+	<li><input type="checkbox" name="checkbox" id='4' checked data-labelauty="剑桥翻译" url="http://dictionary.cambridge.org/zhs/%E8%AF%8D%E5%85%B8/%E8%8B%B1%E8%AF%AD/"></li>
+	<li><input type="checkbox" name="checkbox" id='5'  data-labelauty="有道翻译" url="http://dict.youdao.com/search?le=eng&q="></li>
+	<li><input type="checkbox" name="checkbox" id='6'  data-labelauty="金山翻译" url="http://www.iciba.com/"></li>
+	<li><input type="checkbox" name="checkbox" id='7' checked data-labelauty="谷歌翻译" url="https://translate.google.cn/?hl=en#en/zh-CN/"></li>
+	<li><input type="checkbox" name="checkbox" id='8' data-labelauty="谷歌图片" url="https://www.google.com/search?tbm=isch&q="></li>
+	<li><input type="checkbox" name="checkbox" id='9' data-labelauty="百度图片" url="http://image.baidu.com/search/index?tn=baiduimage&word="></li>
+	<li><input type="checkbox" name="checkbox" id='10' data-labelauty="Youtube" url="https://www.youtube.com/results?search_query="></li>
+	<li><input type="checkbox" name="checkbox" id='11' data-labelauty="StackOverflow" url="https://stackoverflow.com/search?q="></li>
+	<li><input type="checkbox" name="checkbox" id='12' data-labelauty="DuckDuckGo" url="https://duckduckgo.com/?q="></li>
+	<li><input type="checkbox" name="checkbox" id='13' data-labelauty="Github" url="https://github.com/search?utf8=✓&q="></li>
+	<li><input type="checkbox" name="checkbox" id='14' checked data-labelauty="Wiki" url="https://en.wikipedia.org/wiki/"></li>
+	<li><input type="checkbox" name="checkbox" id='15' checked data-labelauty="谷歌搜索" url="https://www.google.com/?gws_rd=cr,ssl#newwindow=1&safe=strict&q="></li>
+	<li><input type="checkbox" name="checkbox" id='16' checked data-labelauty="谷歌学术" url="https://scholar.google.com/scholar?hl=en&q="></li>
 	</ul>
 	<div>
 	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 	<script src="js/jquery-labelauty.js"></script>
 	<script>
-
+		var version = 2;
 		var win_Array = new Array(); 
 		var checkFlag = [
+			"https://corpus.byu.edu/coca/",
 			"https://fanyi.baidu.com/#en/zh/",
 			"https://www.bing.com/dict/search?q=",
-			"http://dictionary.cambridge.org/zhs/词典/英语/",
+			"http://dictionary.cambridge.org/zhs/%E8%AF%8D%E5%85%B8/%E8%8B%B1%E8%AF%AD/",
 			"#",
 			"#",
 			"https://translate.google.cn/?hl=en#en/zh-CN/",
@@ -68,6 +71,12 @@
 		]
 
 		$(function() { 
+			var versionID = localStorage.getItem('version');
+			if (versionID == null || versionID != version) {
+				localStorage.clear()
+				localStorage.setItem('version', version);
+			}
+
 			var userdefaultData = localStorage.getItem('userdefault');
 			if(userdefaultData != null) {
 
@@ -116,7 +125,10 @@
 			key = $.trim(key)
 			for (var i = 0; i < checkFlag.length; i++) {
 				if (checkFlag[i] == '#') continue
-				var url = checkFlag[i] + key;
+				var url = checkFlag[i] + key;	
+				if (checkFlag[i] == 'https://corpus.byu.edu/coca/') {
+					url = checkFlag[i];
+				}
 				win_Array.push(window.open(url))
 			}
 		}
