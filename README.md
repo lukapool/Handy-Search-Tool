@@ -24,6 +24,10 @@ Handy-Search-Tool ![License MIT](https://go-shields.herokuapp.com/license-MIT-bl
 - Wiki ✅
 - 谷歌搜索 ✅
 - 谷歌学术 ✅
+- Vocabulary ✅
+- The Free Dictionary ✅
+- Dictionary ✅
+- Onelook ✅
 
 ## License
 
