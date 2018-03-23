@@ -1,7 +1,7 @@
 Handy-Search-Tool ![License MIT](https://go-shields.herokuapp.com/license-MIT-blue.png)
 ========================
 
-日常工作便捷搜索工具，在线使用 [链接🔗](http://www.find-lab.com/DictSaber)
+日常工作便捷搜索工具，在线使用 [链接🔗](https://dict.luka-lab.xyz)
 
 ## 功能
 
